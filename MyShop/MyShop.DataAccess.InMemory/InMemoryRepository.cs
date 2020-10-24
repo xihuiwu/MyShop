@@ -10,13 +10,13 @@ using MyShop.Core.Contracts;
 
 namespace MyShop.DataAccess.InMemory
 {
-    public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
+    public class SQLRepository<T> : IRepository<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
         string className;
 
-        public InMemoryRepository()
+        public SQLRepository()
         {
             className = typeof(T).Name;
             items = cache[className] as List<T>;
